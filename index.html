@@ -233,6 +233,159 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nyada.com/2024/06/02/%E6%8D%A2%E7%94%B5%E8%84%91%E5%90%8E%E6%80%8E%E4%B9%88%E8%BF%81%E7%A7%BBhexo%E5%8D%9A%E5%AE%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/11578.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nyada">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2024/06/02/%E6%8D%A2%E7%94%B5%E8%84%91%E5%90%8E%E6%80%8E%E4%B9%88%E8%BF%81%E7%A7%BBhexo%E5%8D%9A%E5%AE%A2/" itemprop="url">换电脑后怎么迁移hexo博客？</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-06-02T23:32:14+08:00">
+                2024-06-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近换电脑了。今晚有空正好把我的hexo搬过来了，在这里分享一下换电脑以后如何转移hexo。</p>
+<p>我们要知道，在我们的hexo博客文件中有一个.gitignore，这个文件就是在你同步的时候不把某些文件上传到github上，所以我们直接从github下拉文件到新电脑是行不通的。</p>
+<p>所以在这里分享一个我用的方法。</p>
+<h2 id="1-备份你旧电脑的文件"><a href="#1-备份你旧电脑的文件" class="headerlink" title="1.备份你旧电脑的文件"></a>1.备份你旧电脑的文件</h2><p>为了省事，我建议删除node_modules文件夹，然后把剩余的文件全部备份。</p>
+<h2 id="2-新电脑准备工作"><a href="#2-新电脑准备工作" class="headerlink" title="2.新电脑准备工作"></a>2.新电脑准备工作</h2><h3 id="2-1-准备好git"><a href="#2-1-准备好git" class="headerlink" title="2.1 准备好git"></a>2.1 准备好git</h3><p>git下载链接：<a target="_blank" rel="noopener" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p>
+<p>打开gitbash设置用户，注意这个不是登录，是给你的电脑设置一个用户，等你上传的时候，告诉远程仓库是谁上传的而已。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;你的名字&quot;（注意前边是“- -global”，有两个横线）</span><br><span class="line">git config --global user.email &quot;你的邮箱&quot;</span><br></pre></td></tr></table></figure>
+
+<p>配置好SSH，GitHub教程 SSH keys配置</p>
+<p>记得把git添加到环境变量中，要不然后边使用hexo时候会报错’git’ 不是内部或外部命令,也不是可运行的程序 或批处理文件。</p>
+<p>补充：添加环境变量——》直接搜索环境变量打开——》添加环境变量：双击打开系统变量的path——》找到你git的安装目录，把bin的地址加入到path中即可。</p>
+<h3 id="2-2-准备好Node-js"><a href="#2-2-准备好Node-js" class="headerlink" title="2.2 准备好Node.js"></a>2.2 准备好Node.js</h3><p>Node.js安装配置</p>
+<p>给你的npm换成淘宝源，这样待会下东西下的更快。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https://registry.npm.taobao.org/</span><br></pre></td></tr></table></figure>
+
+<p>（如果看不懂这是干嘛，建议你回忆一下npm怎么用 npm超详细入门 源管理 | 常用指令 | 下载 | 淘宝源卸载）</p>
+<h3 id="2-3准备好hexo"><a href="#2-3准备好hexo" class="headerlink" title="2.3准备好hexo"></a>2.3准备好hexo</h3><p>既然你已经回忆起npm怎么用了，那你用npm安装上hexo<br>安装hexo</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-将备份文件转移到新电脑"><a href="#3-将备份文件转移到新电脑" class="headerlink" title="3.将备份文件转移到新电脑"></a>3.将备份文件转移到新电脑</h2><p>就是直接把你那个文件复制到新电脑上。</p>
+<p>然后进入文件，打开gitbash或者cmd，安装依赖（就是把你之前删除的node_modules文件装回来）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>执行完了以后看一下你的文件夹里应该已经出现node_modules文件夹了。</p>
+<h2 id="4-下载hexo的git工具"><a href="#4-下载hexo的git工具" class="headerlink" title="4.下载hexo的git工具"></a>4.下载hexo的git工具</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>下载完以后，你就可以在新电脑上正常使用了。写一个新文章，试试</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>打开博客，你的文章就更新啦。<br>————————————————</p>
+<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36667170/article/details/118163563">https://blog.csdn.net/qq_36667170/article/details/118163563</a></p>
+<p>如有侵权联系删除！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://nyada.com/2024/06/02/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1855,128 +2008,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nyada.com/2024/04/02/hexo%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/11578.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="nyada">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2024/04/02/hexo%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81/" itemprop="url">hexo常用代码</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-04-02T00:11:05+08:00">
-                2024-04-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>常用命令hexo new “name”       # 新建文章</p>
-<p>hexo new page “name”  # 新建页面<br>hexo g                # 生成页面<br>hexo d                # 部署<br>hexo g -d             # 生成页面并部署<br>hexo s                # 本地预览<br>hexo clean            # 清除缓存和已生成的静态文件<br>hexo help             # 帮助</p>
-<p>作者：crystal<br>链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/60578464">https://zhuanlan.zhihu.com/p/60578464</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2031,7 +2062,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
