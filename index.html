@@ -233,6 +233,159 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nyada.com/2024/06/03/How-to-Move-Your-Hexo-blog-after-you-change-your-computer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/11578.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nyada">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2024/06/03/How-to-Move-Your-Hexo-blog-after-you-change-your-computer/" itemprop="url">How to Move Your Hexo blog after you change your computer</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-06-03T00:14:38+08:00">
+                2024-06-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近换电脑了。今晚有空正好把我的hexo搬过来了，在这里分享一下换电脑以后如何转移hexo。</p>
+<p>我们要知道，在我们的hexo博客文件中有一个.gitignore，这个文件就是在你同步的时候不把某些文件上传到github上，所以我们直接从github下拉文件到新电脑是行不通的。</p>
+<p>所以在这里分享一个我用的方法。</p>
+<h2 id="1-备份你旧电脑的文件"><a href="#1-备份你旧电脑的文件" class="headerlink" title="1.备份你旧电脑的文件"></a>1.备份你旧电脑的文件</h2><p>为了省事，我建议删除node_modules文件夹，然后把剩余的文件全部备份。</p>
+<h2 id="2-新电脑准备工作"><a href="#2-新电脑准备工作" class="headerlink" title="2.新电脑准备工作"></a>2.新电脑准备工作</h2><h3 id="2-1-准备好git"><a href="#2-1-准备好git" class="headerlink" title="2.1 准备好git"></a>2.1 准备好git</h3><p>git下载链接：<a target="_blank" rel="noopener" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p>
+<p>打开gitbash设置用户，注意这个不是登录，是给你的电脑设置一个用户，等你上传的时候，告诉远程仓库是谁上传的而已。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;你的名字&quot;（注意前边是“- -global”，有两个横线）</span><br><span class="line">git config --global user.email &quot;你的邮箱&quot;</span><br></pre></td></tr></table></figure>
+
+<p>配置好SSH，GitHub教程 SSH keys配置</p>
+<p>记得把git添加到环境变量中，要不然后边使用hexo时候会报错’git’ 不是内部或外部命令,也不是可运行的程序 或批处理文件。</p>
+<p>补充：添加环境变量——》直接搜索环境变量打开——》添加环境变量：双击打开系统变量的path——》找到你git的安装目录，把bin的地址加入到path中即可。</p>
+<h3 id="2-2-准备好Node-js"><a href="#2-2-准备好Node-js" class="headerlink" title="2.2 准备好Node.js"></a>2.2 准备好Node.js</h3><p>Node.js安装配置</p>
+<p>给你的npm换成淘宝源，这样待会下东西下的更快。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https://registry.npm.taobao.org/</span><br></pre></td></tr></table></figure>
+
+<p>（如果看不懂这是干嘛，建议你回忆一下npm怎么用 npm超详细入门 源管理 | 常用指令 | 下载 | 淘宝源卸载）</p>
+<h3 id="2-3准备好hexo"><a href="#2-3准备好hexo" class="headerlink" title="2.3准备好hexo"></a>2.3准备好hexo</h3><p>既然你已经回忆起npm怎么用了，那你用npm安装上hexo<br>安装hexo</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-将备份文件转移到新电脑"><a href="#3-将备份文件转移到新电脑" class="headerlink" title="3.将备份文件转移到新电脑"></a>3.将备份文件转移到新电脑</h2><p>就是直接把你那个文件复制到新电脑上。</p>
+<p>然后进入文件，打开gitbash或者cmd，安装依赖（就是把你之前删除的node_modules文件装回来）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>执行完了以后看一下你的文件夹里应该已经出现node_modules文件夹了。</p>
+<h2 id="4-下载hexo的git工具"><a href="#4-下载hexo的git工具" class="headerlink" title="4.下载hexo的git工具"></a>4.下载hexo的git工具</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>下载完以后，你就可以在新电脑上正常使用了。写一个新文章，试试</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>打开博客，你的文章就更新啦。<br>————————————————</p>
+<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36667170/article/details/118163563">https://blog.csdn.net/qq_36667170/article/details/118163563</a></p>
+<p>如有侵权联系删除！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://nyada.com/2024/06/02/%E6%8D%A2%E7%94%B5%E8%84%91%E5%90%8E%E6%80%8E%E4%B9%88%E8%BF%81%E7%A7%BBhexo%E5%8D%9A%E5%AE%A2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1843,171 +1996,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nyada.com/2024/04/02/categories/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/11578.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="nyada">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2024/04/02/categories/" itemprop="url">categories</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-04-02T12:05:27+08:00">
-                2024-04-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/a/" itemprop="url" rel="index">
-                    <span itemprop="name">a</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="单词解释"><a href="#单词解释" class="headerlink" title="单词解释"></a>单词解释</h2><p>“categories” 是英文中的一个词，通常用于描述事物或概念的分类或类别。在计算机领域，尤其是在网站或博客的开发中，”categories” 通常指代文章或内容所属的类别或分类。在网站或博客的内容管理系统中，可以使用 “categories” 来将文章或内容进行分类，以便读者更容易地找到感兴趣的内容。在中文中，”categories” 可以翻译为 “分类” 或 “类别”。</p>
-<h2 id="categories和tags的区别"><a href="#categories和tags的区别" class="headerlink" title="categories和tags的区别"></a>categories和tags的区别</h2><p>“categories”（分类）和”tags”（标签）在内容管理系统中用于对文章或内容进行分类和标记，但它们在功能和用途上有一些区别：</p>
-<ol>
-<li><strong>分类（Categories）</strong>：<ul>
-<li>分类通常用于对文章或内容进行更广泛的主题性分类。它们代表了文章所属的主要类别或主题。例如，一个博客可能有 “科技”、”健康”、”旅行” 等分类。</li>
-<li>一篇文章通常只能属于一个分类，它代表了文章的主要内容或主题。</li>
-</ul>
-</li>
-<li><strong>标签（Tags）</strong>：<ul>
-<li>标签则是用于对文章或内容进行更具体的描述性标记。标签通常用于描述文章的关键词、主题或内容特点，使读者能够更容易地找到相关内容。例如，对于一篇关于健康的文章，可能会有 “健康”、”饮食”、”运动” 等标签。</li>
-<li>一篇文章可以有多个标签，这样可以更细致地描述文章的内容特点。</li>
-</ul>
-</li>
-</ol>
-<p>因此，分类更多地用于对文章进行宏观的整体分类，而标签则更适合用于对文章进行细致的描述和关联。</p>
-<h2 id="如何在网站中设置categories"><a href="#如何在网站中设置categories" class="headerlink" title="如何在网站中设置categories"></a>如何在网站中设置categories</h2><p>在网站中设置文章分类（categories）通常是通过网站的内容管理系统（CMS）或使用特定的网站建设平台来完成的。下面是一般的步骤：</p>
-<ol>
-<li><strong>登录后台管理界面：</strong> 使用你的管理员账户登录到你的网站后台管理界面。</li>
-<li><strong>找到分类设置选项：</strong> 寻找一个用于管理文章分类的选项或页面。这通常在网站管理界面的“文章”或“内容”部分。</li>
-<li><strong>创建分类：</strong> 一般情况下，你会看到一个可以添加、编辑或删除文章分类的界面。在这里，你可以创建新的分类，例如：“科技”、“健康”、“旅行”等。</li>
-<li><strong>指定文章分类：</strong> 在撰写或编辑文章时，你应该能够从已创建的分类中选择一个适当的分类。这通常在撰写文章的编辑界面中的一个下拉菜单或复选框中完成。</li>
-<li><strong>保存更改：</strong> 选择好文章分类后，确保保存你的文章或更改。这样，文章就会被归类到你所选择的分类中。</li>
-</ol>
-<p>具体的步骤可能会因网站建设平台或CMS系统而异，但通常都遵循类似的流程。如果你使用的是特定的网站建设平台（如WordPress、Wix、Squarespace等），可以参考相关平台的帮助文档或社区支持资源，了解更详细的指导。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2062,7 +2050,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
